@@ -1,0 +1,17 @@
+.navbar {
+  background-color: black;
+  height: 100px;
+  border-bottom: 4px solid gainsboro;
+}
+
+.connect-metamask {
+  color: black;
+  background-color: gainsboro;
+  padding: 1px 32px;
+  margin-top: 16px;
+  margin-right: 16px;
+  position: absolute;
+  right: 0px;
+  font-size: 16px;
+  font-weight: bold;
+}
