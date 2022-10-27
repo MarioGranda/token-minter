@@ -1,6 +1,6 @@
 export const abi = [
   {
-    inputs: {},
+    inputs: [],
     stateMutability: "nonpayable",
     type: "constructor",
   },
@@ -141,7 +141,7 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: {},
+    inputs: [],
     name: "decimals",
     outputs: [
       {
@@ -215,12 +215,12 @@ export const abi = [
       },
     ],
     name: "mint",
-    outputs: {},
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: {},
+    inputs: [],
     name: "name",
     outputs: [
       {
@@ -233,7 +233,7 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: {},
+    inputs: [],
     name: "owner",
     outputs: [
       {
@@ -246,14 +246,14 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: {},
+    inputs: [],
     name: "renounceOwnership",
-    outputs: {},
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: {},
+    inputs: [],
     name: "symbol",
     outputs: [
       {
@@ -266,7 +266,7 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: {},
+    inputs: [],
     name: "totalSupply",
     outputs: [
       {
@@ -340,7 +340,7 @@ export const abi = [
       },
     ],
     name: "transferOwnership",
-    outputs: {},
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
