@@ -9,9 +9,9 @@ function App() {
         <p>User balance:</p>
       </div>
       <div>
-        <div>
+        <div className="mint-tokens">
           <input placeholder="Insert address" value=""></input>
-          <button>Mint Tokens</button>
+          <button className="mint-button">Mint Tokens</button>
         </div>
       </div>
     </div>
