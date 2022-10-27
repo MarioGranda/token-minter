@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import {
   getTokenName,
   getTokenSymbol,
@@ -27,6 +27,11 @@ function App() {
     }
   }, []);
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setMintAddress(value);
+  };
+
   return (
     <div className="App">
       <div className="token-data">
@@ -36,7 +41,11 @@ function App() {
       </div>
       <div>
         <div className="mint-tokens">
-          <input placeholder="Insert address" value={mintAddress}></input>
+          <input
+            placeholder="Insert address"
+            value={mintAddress}
+            onChange={(e) => handleInputChange(e)}
+          ></input>
           <button className="mint-button">Mint Tokens</button>
         </div>
       </div>
