@@ -1,4 +1,8 @@
 .App {
-  text-align: center;
+  color: gainsboro;
+  height: 100vh;
+  background-color: black;
+  padding-top: 300px;
+  padding-left: 500px;
 }
 
