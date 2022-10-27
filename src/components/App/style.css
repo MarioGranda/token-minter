@@ -2,7 +2,14 @@
   color: gainsboro;
   height: 100vh;
   background-color: black;
-  padding-top: 300px;
-  padding-left: 500px;
+  padding-top: 150px;
+  padding-left: 400px;
 }
 
+.token-data {
+  font-size: 60px;
+}
+
+p {
+  margin-bottom:20px;
+}
