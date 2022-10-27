@@ -13,3 +13,31 @@
 p {
   margin-bottom:20px;
 }
+
+.mint-tokens {
+  margin-top: 90px;
+  text-align: center;
+}
+
+.mint-tokens > input, button {
+  text-align: center;
+  background-color: gainsboro;
+  border: 3px solid black;
+  height: 100px;
+  width: 400px;
+  font-size: 150%;
+  color: black;
+}
+
+input {
+  outline: none;
+  margin-right: 20px;
+}
+
+button {  
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: auto;
+}
