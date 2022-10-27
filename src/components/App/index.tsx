@@ -12,6 +12,7 @@ function App() {
     name: "",
     symbol: "",
   });
+  const [mintAddress, setMintAddress] = useState("");
 
   useEffect(() => {
     const getTokenAndBalance = async () => {
@@ -35,7 +36,7 @@ function App() {
       </div>
       <div>
         <div className="mint-tokens">
-          <input placeholder="Insert address" value=""></input>
+          <input placeholder="Insert address" value={mintAddress}></input>
           <button className="mint-button">Mint Tokens</button>
         </div>
       </div>
