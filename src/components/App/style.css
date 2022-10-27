@@ -19,7 +19,7 @@ p {
   text-align: center;
 }
 
-.mint-tokens > input, button {
+.mint-tokens > input,  .mint-button {
   text-align: center;
   background-color: gainsboro;
   border: 3px solid black;
