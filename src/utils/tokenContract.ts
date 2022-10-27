@@ -14,3 +14,7 @@ export const getTokenName = async () => {
 export const getTokenSymbol = async () => {
   return await getTokenContract().symbol();
 };
+
+export const getUserBalance = async (userAddress: string) => {
+  return await getTokenContract().balanceOf(userAddress);
+};
