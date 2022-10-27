@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  getTokenName,
+  getTokenSymbol,
+  getUserBalance,
+} from "../../utils/tokenContract";
 import "./style.css";
 
 function App() {
-  const [userBalance, setUserBalance] = useState(null);
+  const [userBalance, setUserBalance] = useState(0);
   const [token, setToken] = useState({
     name: "",
     symbol: "",
   });
+
+  useEffect(() => {
+    const getTokenAndBalance = async () => {
+      setToken({
+        name: await getTokenName(),
+        symbol: await getTokenSymbol(),
+      });
+      setUserBalance(await getUserBalance());
+    };
+    if (window?.ethereum) {
+      getTokenAndBalance();
+    }
+  }, []);
 
   return (
     <div className="App">
