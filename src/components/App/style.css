@@ -3,11 +3,11 @@
   height: 100vh;
   background-color: black;
   padding-top: 150px;
-  padding-left: 400px;
 }
 
 .token-data {
   font-size: 60px;
+  padding-left: 400px;
 }
 
 p {
