@@ -4,7 +4,7 @@ import { address } from "../../constants/token/address";
 
 const getTokenContract = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = await provider.getSigner();
+  const signer = provider.getSigner();
   return new ethers.Contract(address, abi, signer);
 };
 
