@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
+import { checkNetwork } from "../../utils/network/checkNetwork";
 import {
   getTokenName,
   getTokenSymbol,
@@ -41,7 +42,7 @@ function App() {
   };
 
   const handleOnClick = async () => {
-    if (!mintAddress) {
+    if (!(await checkNetwork())) {
       return;
     }
     setShowLoadingBar(true);
@@ -77,7 +78,11 @@ function App() {
             value={mintAddress}
             onChange={(e) => handleInputChange(e)}
           ></textarea>
-          <button className="mint-button" onClick={handleOnClick}>
+          <button
+            className="mint-button"
+            onClick={handleOnClick}
+            disabled={mintAddress.length === 0}
+          >
             Mint Tokens
           </button>
         </div>
