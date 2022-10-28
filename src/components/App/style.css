@@ -15,29 +15,33 @@ p {
 }
 
 .mint-tokens {
+  display: flex;
+  justify-content: center;
   margin-top: 90px;
   text-align: center;
 }
 
-.mint-tokens > input,  .mint-button {
-  text-align: center;
+.mint-tokens > textarea,  .mint-button {
   background-color: gainsboro;
+  align-items: center;
   border: 3px solid black;
-  height: 100px;
-  width: 400px;
   font-size: 150%;
   color: black;
 }
 
-input {
+textarea {
   outline: none;
   margin-right: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 600px;
 }
 
-button {  
+.mint-button {  
   cursor: pointer;
+  width: 300px;
 }
 
-.button:disabled {
+.mint-button:disabled {
   cursor: auto;
 }
