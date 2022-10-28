@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { BarLoader } from "react-spinners";
 import {
   getTokenName,
   getTokenSymbol,
@@ -19,6 +20,7 @@ function App() {
     showBanner: false,
     success: false,
   });
+  const [showLoadingBar, setShowLoadingBar] = useState(false);
 
   useEffect(() => {
     const getTokenAndBalance = async () => {
@@ -42,6 +44,7 @@ function App() {
     if (!mintAddress) {
       return;
     }
+    setShowLoadingBar(true);
     const status = await mintTokens(mintAddress);
     setBanner({
       showBanner: true,
@@ -78,6 +81,16 @@ function App() {
             Mint Tokens
           </button>
         </div>
+        {
+          <div className="loader">
+            <BarLoader
+              color="#dcdcdc"
+              speedMultiplier={0.5}
+              width={500}
+              loading={showLoadingBar}
+            />
+          </div>
+        }
       </div>
     </div>
   );
