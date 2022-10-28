@@ -17,8 +17,13 @@ const NavBar = () => {
     getAccount();
     if (window?.ethereum) {
       window.ethereum.on("accountsChanged", getAccount);
-      return () =>
+      window.ethereum.on("chainChanged", () => setUserWallet(null));
+      return () => {
         window.ethereum.removeListener("accountsChanged", getAccount);
+        window.ethereum.removeListener("chainChanged", () =>
+          setUserWallet(null)
+        );
+      };
     }
   }, []);
 
