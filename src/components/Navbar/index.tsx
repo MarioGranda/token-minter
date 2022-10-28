@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { parseEthAddress } from "../../utils/address";
 import "./style.css";
 
 const NavBar = () => {
@@ -38,7 +39,7 @@ const NavBar = () => {
           onClick={connectWallet}
           disabled={userWallet !== null}
         >
-          <p>{userWallet ?? "Connect Metamask"}</p>
+          <p>{userWallet ? parseEthAddress(userWallet) : "Connect Metamask"}</p>
         </button>
       </div>
     </header>
