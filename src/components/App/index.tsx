@@ -5,6 +5,7 @@ import {
   getUserBalance,
 } from "../../utils/tokenContract/getFunctions";
 import { mintTokens } from "../../utils/tokenContract/mintFunction";
+import Banner from "../Banner";
 import "./style.css";
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
     symbol: "",
   });
   const [mintAddress, setMintAddress] = useState("");
-  const [showBanner, setShowBanner] = useState(false);
+  const [banner, setBanner] = useState({
+    showBanner: false,
+    success: false,
+  });
 
   useEffect(() => {
     const getTokenAndBalance = async () => {
@@ -39,16 +43,22 @@ function App() {
       return;
     }
     const status = await mintTokens(mintAddress);
-    if (status === 1) {
-      setShowBanner(true);
-      setTimeout(() => {
-        setShowBanner(false);
-      }, 10000);
-    }
+    setBanner({
+      showBanner: true,
+      success: status === 1,
+    });
+    setTimeout(() => {
+      setBanner((prev) => ({ ...prev, showBanner: false }));
+    }, 10000);
   };
 
   return (
     <div className="App">
+      <Banner
+        showBanner={banner.showBanner}
+        userAddress={mintAddress}
+        success={banner.success}
+      />
       <div className="token-data">
         <p>Token name: {token.name}</p>
         <p>Token symbol: {token.symbol}</p>
