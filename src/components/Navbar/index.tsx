@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { goerliChainId } from "../../constants/network/chainId";
 import { parseEthAddress } from "../../utils/format/address";
 import "./style.css";
 
@@ -25,6 +26,9 @@ const NavBar = () => {
     if (userWallet) {
       return;
     }
+    await provider.send("wallet_switchEthereumChain", [
+      { chainId: goerliChainId },
+    ]);
     const accounts = await provider.send("eth_requestAccounts", []);
     if (accounts.length === 0) {
       return;
