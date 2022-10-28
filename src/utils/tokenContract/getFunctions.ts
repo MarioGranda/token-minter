@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
-import { abi } from "../constants/token/abi";
-import { address } from "../constants/token/address";
+import { abi } from "../../constants/token/abi";
+import { address } from "../../constants/token/address";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
