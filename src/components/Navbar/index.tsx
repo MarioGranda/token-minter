@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { goerliChainId } from "../../constants/network/chainId";
 import { parseEthAddress } from "../../utils/format/address";
+import { checkNetwork } from "../../utils/network/checkNetwork";
 import "./style.css";
 
 const NavBar = () => {
@@ -17,10 +18,6 @@ const NavBar = () => {
       }
     };
     getAccount();
-    const checkNetwork = async () => {
-      const { chainId } = await provider.getNetwork();
-      return chainId === Number(goerliChainId);
-    };
     const onChainChange = async () => {
       if (!(await checkNetwork())) {
         setUserWallet(null);
