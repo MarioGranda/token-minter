@@ -3,7 +3,7 @@ import {
   getTokenName,
   getTokenSymbol,
   getUserBalance,
-} from "../../utils/tokenContract";
+} from "../../utils/tokenContract/getFunctions";
 import "./style.css";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     }
   }, []);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
     setMintAddress(value);
   };
@@ -41,11 +41,11 @@ function App() {
       </div>
       <div>
         <div className="mint-tokens">
-          <input
+          <textarea
             placeholder="Insert address"
             value={mintAddress}
             onChange={(e) => handleInputChange(e)}
-          ></input>
+          ></textarea>
           <button className="mint-button">Mint Tokens</button>
         </div>
       </div>
