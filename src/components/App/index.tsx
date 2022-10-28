@@ -50,6 +50,9 @@ function App() {
     setTimeout(() => {
       setBanner((prev) => ({ ...prev, showBanner: false }));
     }, 10000);
+    if (status === 1) {
+      setUserBalance(await getUserBalance());
+    }
   };
 
   return (
