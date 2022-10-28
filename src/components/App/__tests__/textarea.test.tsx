@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from ".";
+import App from "..";
 
 jest.mock("../../utils/tokenContract/getFunctions", () => ({
   getTokenContract() {
