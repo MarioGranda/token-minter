@@ -11,8 +11,11 @@ const NavBar = () => {
 
   useEffect(() => {
     const getAccount = async () => {
-      const accounts = await provider.send("eth_accounts", []);
-      setUserWallet(accounts[0] ?? null);
+      const { chainId } = await provider.getNetwork();
+      if (chainId === Number(goerliChainId)) {
+        const accounts = await provider.send("eth_accounts", []);
+        setUserWallet(accounts[0] ?? null);
+      }
     };
     getAccount();
     if (window?.ethereum) {
