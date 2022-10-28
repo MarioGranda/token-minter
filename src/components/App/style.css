@@ -45,3 +45,10 @@ textarea {
 .mint-button:disabled {
   cursor: auto;
 }
+
+.loader {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
