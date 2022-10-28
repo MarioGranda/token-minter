@@ -44,6 +44,7 @@ textarea {
 
 .mint-button:disabled {
   cursor: auto;
+  opacity: 0.2;
 }
 
 .loader {
