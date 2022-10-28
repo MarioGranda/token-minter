@@ -11,21 +11,27 @@ const NavBar = () => {
 
   useEffect(() => {
     const getAccount = async () => {
-      const { chainId } = await provider.getNetwork();
-      if (chainId === Number(goerliChainId)) {
+      if (await checkNetwork()) {
         const accounts = await provider.send("eth_accounts", []);
         setUserWallet(accounts[0] ?? null);
       }
     };
     getAccount();
+    const checkNetwork = async () => {
+      const { chainId } = await provider.getNetwork();
+      return chainId === Number(goerliChainId);
+    };
+    const onChainChange = async () => {
+      if (!(await checkNetwork())) {
+        setUserWallet(null);
+      }
+    };
     if (window?.ethereum) {
       window.ethereum.on("accountsChanged", getAccount);
-      window.ethereum.on("chainChanged", () => setUserWallet(null));
+      window.ethereum.on("chainChanged", onChainChange);
       return () => {
         window.ethereum.removeListener("accountsChanged", getAccount);
-        window.ethereum.removeListener("chainChanged", () =>
-          setUserWallet(null)
-        );
+        window.ethereum.removeListener("chainChanged", onChainChange);
       };
     }
   }, []);
