@@ -1,5 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
+import { goerliChainId } from "../../constants/network/chainId";
+import useWalletAndChain from "../../hook/useWalletAndChain";
 import { checkNetwork } from "../../utils/network/checkNetwork";
 import {
   getTokenName,
@@ -22,6 +24,10 @@ function App() {
     success: false,
   });
   const [showLoadingBar, setShowLoadingBar] = useState(false);
+  const { chainId, userWallet } = useWalletAndChain();
+
+  const isButtonEnabled =
+    chainId === goerliChainId && mintAddress.length > 0 && userWallet;
 
   useEffect(() => {
     const getTokenAndBalance = async () => {
@@ -42,9 +48,6 @@ function App() {
   };
 
   const handleOnClick = async () => {
-    if (!(await checkNetwork())) {
-      return;
-    }
     setShowLoadingBar(true);
     const status = await mintTokens(mintAddress);
     setBanner({
@@ -54,7 +57,7 @@ function App() {
     setTimeout(() => {
       setBanner((prev) => ({ ...prev, showBanner: false }));
     }, 10000);
-    if (status === 1) {
+    if (status === 1 && mintAddress === userWallet) {
       setUserBalance(await getUserBalance());
     }
   };
@@ -81,7 +84,7 @@ function App() {
           <button
             className="mint-button"
             onClick={handleOnClick}
-            disabled={mintAddress.length === 0}
+            disabled={!isButtonEnabled ?? true}
           >
             Mint Tokens
           </button>
