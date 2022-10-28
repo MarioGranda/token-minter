@@ -8,9 +8,9 @@ const getTokenContract = async () => {
   return new ethers.Contract(address, abi, signer);
 };
 
-const mintTokens = async (to: string) => {
+export const mintTokens = async (to: string) => {
   const contract = await getTokenContract();
   const tx = await contract.mint(to, 1);
   const receipt = await tx.wait();
-  return receipt.result;
+  return receipt.status;
 };
