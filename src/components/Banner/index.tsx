@@ -7,7 +7,16 @@ interface Props {
   userAddress: string;
 }
 const Banner: FC<Props> = ({ showBanner, success, userAddress }) => {
-  return <div className="banner"></div>;
+  if (!showBanner) {
+    return null;
+  }
+  return (
+    <div className={`${!success && "bg-red"} banner`}>
+      {success
+        ? `Tokens minted to address: ${userAddress}`
+        : "Transaction failed"}
+    </div>
+  );
 };
 
 export default Banner;
