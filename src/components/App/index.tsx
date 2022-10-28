@@ -4,6 +4,7 @@ import {
   getTokenSymbol,
   getUserBalance,
 } from "../../utils/tokenContract/getFunctions";
+import { mintTokens } from "../../utils/tokenContract/mintFunction";
 import "./style.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     symbol: "",
   });
   const [mintAddress, setMintAddress] = useState("");
+  const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
     const getTokenAndBalance = async () => {
@@ -32,6 +34,19 @@ function App() {
     setMintAddress(value);
   };
 
+  const handleOnClick = async () => {
+    if (!mintAddress) {
+      return;
+    }
+    const status = await mintTokens(mintAddress);
+    if (status === 1) {
+      setShowBanner(true);
+      setTimeout(() => {
+        setShowBanner(false);
+      }, 10000);
+    }
+  };
+
   return (
     <div className="App">
       <div className="token-data">
@@ -46,7 +61,9 @@ function App() {
             value={mintAddress}
             onChange={(e) => handleInputChange(e)}
           ></textarea>
-          <button className="mint-button">Mint Tokens</button>
+          <button className="mint-button" onClick={handleOnClick}>
+            Mint Tokens
+          </button>
         </div>
       </div>
     </div>
