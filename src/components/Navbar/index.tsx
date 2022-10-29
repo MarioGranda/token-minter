@@ -1,37 +1,12 @@
 import { ethers } from "ethers";
-import { useEffect, useState } from "react";
 import { goerliChainId } from "../../constants/network/chainId";
+import useWalletAndChain from "../../hook/useWalletAndChain";
 import { parseEthAddress } from "../../utils/format/address";
-import { checkNetwork } from "../../utils/network/checkNetwork";
 import "./style.css";
 
 const NavBar = () => {
-  const [userWallet, setUserWallet] = useState(null);
-
+  const { userWallet } = useWalletAndChain();
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-  useEffect(() => {
-    const getAccount = async () => {
-      if (await checkNetwork()) {
-        const accounts = await provider.send("eth_accounts", []);
-        setUserWallet(accounts[0] ?? null);
-      }
-    };
-    getAccount();
-    const onChainChange = async () => {
-      if (!(await checkNetwork())) {
-        setUserWallet(null);
-      }
-    };
-    if (window?.ethereum) {
-      window.ethereum.on("accountsChanged", getAccount);
-      window.ethereum.on("chainChanged", onChainChange);
-      return () => {
-        window.ethereum.removeListener("accountsChanged", getAccount);
-        window.ethereum.removeListener("chainChanged", onChainChange);
-      };
-    }
-  }, []);
 
   const connectWallet = async () => {
     if (userWallet) {
@@ -44,7 +19,6 @@ const NavBar = () => {
     if (accounts.length === 0) {
       return;
     }
-    setUserWallet(accounts[0]);
   };
   return (
     <header>
