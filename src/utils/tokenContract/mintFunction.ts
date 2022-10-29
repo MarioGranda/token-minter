@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { abi } from "../../constants/token/abi";
 import { address } from "../../constants/token/address";
+import { mintAmount } from "../../constants/token/mint";
 
 const getTokenContract = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -10,7 +11,7 @@ const getTokenContract = async () => {
 
 export const mintTokens = async (to: string) => {
   const contract = await getTokenContract();
-  const tx = await contract.mint(to, 1);
+  const tx = await contract.mint(to, mintAmount);
   const receipt = await tx.wait();
   return receipt.status;
 };
