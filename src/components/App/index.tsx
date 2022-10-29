@@ -30,6 +30,9 @@ function App() {
     chainId === goerliChainId && mintAddress.length > 0 && userWallet;
 
   useEffect(() => {
+    if (!userWallet) {
+      return;
+    }
     const getTokenAndBalance = async () => {
       setToken({
         name: await getTokenName(),
@@ -40,7 +43,7 @@ function App() {
     if (window?.ethereum) {
       getTokenAndBalance();
     }
-  }, []);
+  }, [userWallet]);
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
