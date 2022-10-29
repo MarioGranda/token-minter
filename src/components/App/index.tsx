@@ -92,7 +92,7 @@ function App() {
             Mint Tokens
           </button>
         </div>
-        {
+        {!banner.showBanner && (
           <div className="loader">
             <BarLoader
               color="#dcdcdc"
@@ -101,7 +101,7 @@ function App() {
               loading={showLoadingBar}
             />
           </div>
-        }
+        )}
       </div>
     </div>
   );
