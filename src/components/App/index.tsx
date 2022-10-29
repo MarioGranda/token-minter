@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
+import { timeVisibility } from "../../constants/banner/time";
 import { goerliChainId } from "../../constants/network/chainId";
 import useWalletAndChain from "../../hook/useWalletAndChain";
 import { checkNetwork } from "../../utils/network/checkNetwork";
@@ -59,7 +60,7 @@ function App() {
     });
     setTimeout(() => {
       setBanner((prev) => ({ ...prev, showBanner: false }));
-    }, 10000);
+    }, timeVisibility);
     if (status === 1 && mintAddress === userWallet) {
       setUserBalance(await getUserBalance());
     }
