@@ -1,13 +1,13 @@
-import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { goerliChainId } from "../constants/network/chainId";
 import { checkNetwork } from "../utils/network/checkNetwork";
+import getProvider from "../utils/network/getProvider";
 
 const useWalletAndChain = () => {
   const [userWallet, setUserWallet] = useState(null);
   const [chainId, setChainId] = useState<string | null>(null);
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const provider = getProvider();
 
   useEffect(() => {
     const getAccount = async () => {

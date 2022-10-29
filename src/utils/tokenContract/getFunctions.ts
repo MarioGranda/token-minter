@@ -1,8 +1,9 @@
 import { ethers } from "ethers";
 import { abi } from "../../constants/token/abi";
 import { address } from "../../constants/token/address";
+import getProvider from "../network/getProvider";
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
+const provider = getProvider();
 
 const getTokenContract = () => {
   return new ethers.Contract(address, abi, provider);

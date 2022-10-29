@@ -2,9 +2,10 @@ import { ethers } from "ethers";
 import { abi } from "../../constants/token/abi";
 import { address } from "../../constants/token/address";
 import { mintAmount } from "../../constants/token/mint";
+import getProvider from "../network/getProvider";
 
 const getTokenContract = async () => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const provider = getProvider();
   const signer = provider.getSigner();
   return new ethers.Contract(address, abi, signer);
 };

@@ -1,8 +1,8 @@
-import { ethers } from "ethers";
 import { goerliChainId } from "../../constants/network/chainId";
+import getProvider from "./getProvider";
 
 export const checkNetwork = async () => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const provider = getProvider();
   const { chainId } = await provider.getNetwork();
   return chainId === Number(goerliChainId);
 };
