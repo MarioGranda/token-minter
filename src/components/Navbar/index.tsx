@@ -16,9 +16,6 @@ const NavBar = () => {
       { chainId: goerliChainId },
     ]);
     const accounts = await provider.send("eth_requestAccounts", []);
-    if (accounts.length === 0) {
-      return;
-    }
   };
   return (
     <header>
