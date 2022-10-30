@@ -32,6 +32,11 @@ function App() {
 
   useEffect(() => {
     if (!userWallet) {
+      setToken({
+        name: "",
+        symbol: "",
+      });
+      setUserBalance("");
       return;
     }
     const getTokenAndBalance = async () => {
