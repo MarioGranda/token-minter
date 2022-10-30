@@ -14,7 +14,7 @@ import Banner from "../Banner";
 import "./style.css";
 
 function App() {
-  const [userBalance, setUserBalance] = useState(0);
+  const [userBalance, setUserBalance] = useState("");
   const [token, setToken] = useState({
     name: "",
     symbol: "",

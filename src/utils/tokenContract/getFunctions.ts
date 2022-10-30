@@ -19,5 +19,5 @@ export const getTokenSymbol = async () => {
 
 export const getUserBalance = async () => {
   const accounts = await provider.send("eth_accounts", []);
-  return Number(await getTokenContract().balanceOf(accounts[0]));
+  return (await getTokenContract().balanceOf(accounts[0])).toString();
 };
