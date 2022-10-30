@@ -3,6 +3,7 @@ import { BarLoader } from "react-spinners";
 import { timeVisibility } from "../../constants/banner/time";
 import { goerliChainId } from "../../constants/network/chainId";
 import useWalletAndChain from "../../hook/useWalletAndChain";
+import { getChecksumAddress } from "../../utils/format/checksumAddress";
 import { checkNetwork } from "../../utils/network/checkNetwork";
 import {
   getTokenName,
@@ -55,7 +56,6 @@ function App() {
     const { value } = e.target;
     setMintAddress(value);
   };
-  console.log(mintAddress, userWallet);
 
   const handleOnClick = async () => {
     setShowLoadingBar(true);
@@ -68,7 +68,10 @@ function App() {
       setBanner((prev) => ({ ...prev, showBanner: false }));
     }, timeVisibility);
     setShowLoadingBar(false);
-    if (status === 1 && mintAddress === userWallet) {
+    if (
+      status === 1 &&
+      getChecksumAddress(mintAddress) === getChecksumAddress(userWallet)
+    ) {
       setUserBalance(await getUserBalance());
     }
   };
