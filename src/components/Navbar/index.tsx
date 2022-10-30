@@ -1,6 +1,6 @@
 import { goerliChainId } from "../../constants/network/chainId";
 import useWalletAndChain from "../../hook/useWalletAndChain";
-import { parseEthAddress } from "../../utils/format/address";
+import { parseEthAddress } from "../../utils/format/parseEthAddress";
 import getProvider from "../../utils/network/getProvider";
 import "./style.css";
 

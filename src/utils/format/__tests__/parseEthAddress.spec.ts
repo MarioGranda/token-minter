@@ -1,4 +1,4 @@
-import { parseEthAddress } from "../address";
+import { parseEthAddress } from "../parseEthAddress";
 
 describe("parseEthAddress", () => {
   it("should return a fixed length string", () => {
