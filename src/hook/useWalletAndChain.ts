@@ -23,6 +23,7 @@ const useWalletAndChain = () => {
         setChainId(null);
       } else {
         setChainId(goerliChainId);
+        getAccount();
       }
     };
     checkChain();
