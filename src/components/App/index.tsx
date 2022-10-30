@@ -4,7 +4,6 @@ import { timeVisibility } from "../../constants/banner/time";
 import { goerliChainId } from "../../constants/network/chainId";
 import useWalletAndChain from "../../hook/useWalletAndChain";
 import { getChecksumAddress } from "../../utils/format/checksumAddress";
-import { checkNetwork } from "../../utils/network/checkNetwork";
 import {
   getTokenName,
   getTokenSymbol,

@@ -35,7 +35,7 @@ const useWalletAndChain = () => {
         window.ethereum.removeListener("chainChanged", checkChain);
       };
     }
-  }, []);
+  }, [provider]);
 
   return {
     chainId,
