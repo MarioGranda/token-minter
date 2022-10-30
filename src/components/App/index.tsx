@@ -55,6 +55,7 @@ function App() {
     const { value } = e.target;
     setMintAddress(value);
   };
+  console.log(mintAddress, userWallet);
 
   const handleOnClick = async () => {
     setShowLoadingBar(true);
@@ -66,6 +67,7 @@ function App() {
     setTimeout(() => {
       setBanner((prev) => ({ ...prev, showBanner: false }));
     }, timeVisibility);
+    setShowLoadingBar(false);
     if (status === 1 && mintAddress === userWallet) {
       setUserBalance(await getUserBalance());
     }
@@ -98,16 +100,14 @@ function App() {
             Mint Tokens
           </button>
         </div>
-        {!banner.showBanner && (
-          <div className="loader">
-            <BarLoader
-              color="#dcdcdc"
-              speedMultiplier={0.5}
-              width={500}
-              loading={showLoadingBar}
-            />
-          </div>
-        )}
+        <div className="loader">
+          <BarLoader
+            color="#dcdcdc"
+            speedMultiplier={0.5}
+            width={500}
+            loading={showLoadingBar}
+          />
+        </div>
       </div>
     </div>
   );
