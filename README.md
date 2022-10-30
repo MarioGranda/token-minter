@@ -1,4 +1,4 @@
-# Add3 test
+# Token Minter
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) installed
